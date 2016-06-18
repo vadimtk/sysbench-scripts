@@ -11,5 +11,8 @@ CREATE TABLE `sb_mongo_results` (
   `engine` varchar(255) GENERATED ALWAYS AS (json_unquote(json_extract(`jrunid`,'$.engine'))) VIRTUAL,
   `cachesize` int(11) GENERATED ALWAYS AS (json_unquote(json_extract(`jrunid`,'$.cachesize'))) VIRTUAL,
   `storage` varchar(255) GENERATED ALWAYS AS (json_unquote(json_extract(`jrunid`,'$.storage'))) VIRTUAL,
-  `runsign` varchar(2048) GENERATED ALWAYS AS (json_unquote(json_extract(`jrunid`,'$.runsign'))) VIRTUAL
+  `runsign` varchar(2048) GENERATED ALWAYS AS (json_unquote(json_extract(`jrunid`,'$.runsign'))) VIRTUAL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `runsign` (`runsign`,`sec`,`threads`,`cachesize`,`engine`,`workload`)
 ) ENGINE=InnoDB
