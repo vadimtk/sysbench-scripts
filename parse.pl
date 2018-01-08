@@ -1,4 +1,9 @@
 #!/usr/bin/perl
+# for Ubuntu: apt install libdbd-sqlite3-perl
+# for Centos: yum install perl-DBD-SQLite
+#
+# use ./parse.pl res.db res-OLTP-meltdown/mysql57-108.BP100/thr1/res.txt bp=100,kernel=108
+#
 
 use DBI;
 my $db = DBI->connect("dbi:SQLite:$ARGV[0]", "", "", {RaiseError => 1, AutoCommit => 1});
